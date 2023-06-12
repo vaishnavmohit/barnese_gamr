@@ -1,0 +1,946 @@
+sbatch -J familiar_high scripts/run_op_freeze.sh familiar_high
+sbatch -J novel_low scripts/run_op_freeze.sh novel_low
+sbatch -J novel_high scripts/run_op_freeze.sh novel_high
+sbatch -J familiar_low scripts/run_op_freeze.sh familiar_low
+
+sbatch -J familiar_high_r34 scripts/run_op_freeze.sh familiar_high gamr_resnet34
+sbatch -J novel_low_r34 scripts/run_op_freeze.sh novel_low gamr_resnet34
+sbatch -J novel_high_r34 scripts/run_op_freeze.sh novel_high gamr_resnet34
+sbatch -J familiar_low_r34 scripts/run_op_freeze.sh familiar_low gamr_resnet34
+
+sbatch -J familiar_high scripts/run_op.sh familiar_high gamr_comb
+sbatch -J novel_low scripts/run_op.sh novel_low gamr_comb
+sbatch -J novel_high scripts/run_op.sh novel_high gamr_comb
+sbatch -J familiar_low scripts/run_op.sh familiar_low gamr_comb
+
+sbatch -J familiar_high_tr scripts/run_op.sh familiar_high gamr_comb_tr
+sbatch -J novel_low_tr scripts/run_op.sh novel_low gamr_comb_tr
+sbatch -J novel_high_tr scripts/run_op.sh novel_high gamr_comb_tr
+sbatch -J familiar_low_tr scripts/run_op.sh familiar_low gamr_comb_tr
+
+sbatch -J alldata_comb scripts/run_op_all.sh all gamr_comb
+
+sbatch -J alldata_comb_r34 scripts/run_op_all.sh all gamr_comb_r34
+
+sbatch -J alldata_comb_r34_freeze scripts/run_op_all_freeze.sh all gamr_comb_r34
+
+
+
+gamr_add_w_zt
+
+sbatch -J gamraddition_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_add_w_zt 1 500 '500' 4 1 23 4
+sbatch -J gamraddition_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_add_w_zt 1 500 '1k' 4 1 23 4
+
+sbatch -J gamraddition_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_add_w_zt 1 500 '500' 4 1 23 2
+sbatch -J gamraddition_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_add_w_zt 1 500 '1k' 4 1 23 2
+
+gamr_add_w
+
+sbatch -J gamraddition_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_add_w 1 300 '500' 4 1 23 1
+sbatch -J gamraddition_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_add_w 1 300 '1k' 4 1 23 1
+
+sbatch -J gamraddition_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_add_w 1 300 '500' 1 1 23 1
+sbatch -J gamraddition_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_add_w 1 300 '1k' 1 1 23 1
+
+sbatch -J gamraddition_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_add_w 1 500 '500' 4 1 23 2
+sbatch -J gamraddition_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_add_w 1 500 '1k' 4 1 23 2
+
+sbatch -J gamraddition_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_add_w 1 500 '500' 1 1 23 1
+sbatch -J gamraddition_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_add_w 1 500 '1k' 1 1 23 1
+
+gamr_addition
+
+sbatch -J gamraddition_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '500' 4 1 23 2
+sbatch -J gamraddition_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '1k' 4 1 23 2
+
+sbatch -J gamraddition_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_addition 1 500 '500' 4 1 23 4
+sbatch -J gamraddition_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh gamr_addition 1 500 '1k' 4 1 23 4
+
+sbatch -J gamraddition_10k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '10k' 4 1 8 2
+sbatch -J gamraddition_10k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '10k' 4 9 15 2
+sbatch -J gamraddition_10k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '10k' 4 16 23 2
+
+sbatch -J gamraddition_5k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '5k' 4 1 8 2
+sbatch -J gamraddition_5k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '5k' 4 9 15 2
+sbatch -J gamraddition_5k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamr_addition 1 500 '5k' 4 16 23 2
+
+sbatch -J gamrv2_op_sda_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sda.sh gamrv2 1 500 '1k' 4
+sbatch -J gamrv2_op_sdb_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdb.sh gamrv2 1 500 '1k' 4
+sbatch -J gamrv2_op_sdc_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdc.sh gamrv2 1 500 '1k' 4
+sbatch -J gamrv2_op_sdd_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdd.sh gamrv2 1 500 '1k' 4
+
+sbatch -J gamrv2_op_sda_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sda.sh gamrv2 1 500 '500' 4
+sbatch -J gamrv2_op_sdb_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdb.sh gamrv2 1 500 '500' 4
+sbatch -J gamrv2_op_sdc_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdc.sh gamrv2 1 500 '500' 4
+sbatch -J gamrv2_op_sdd_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdd.sh gamrv2 1 500 '500' 4
+
+
+sbatch -J gamrv2_10k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '10k' 4 1 8
+sbatch -J gamrv2_10k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '10k' 4 9 15
+sbatch -J gamrv2_10k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '10k' 4 16 23
+
+sbatch -J gamrv2_5k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '5k' 4 1 8 
+sbatch -J gamrv2_5k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '5k' 4 9 15
+sbatch -J gamrv2_5k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '5k' 4 16 23
+
+sbatch -J gamrv2_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '1k' 4 1 23 4
+sbatch -J gamrv2_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '1k' 4 9 15
+sbatch -J gamrv2_1k -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '1k' 4 16 23
+
+sbatch -J gamrv2_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '500' 4 1 23
+sbatch -J gamrv2_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '500' 4 9 15
+sbatch -J gamrv2_500 -p gpu-he -C v100 --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '500' 4 16 23
+
+sbatch -J gamrv2_1k -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv3 1 500 '1k' 4 1 23 4
+
+sbatch -J gamrv2_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '500' 4 1 23 
+sbatch -J gamrv2_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '500' 4 9 15
+sbatch -J gamrv2_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_gamrv2.sh gamrv2 1 500 '500' 4 16 23
+
+
+############################################### RN
+--account=carney-tserre-condo -p gpu --gres=gpu:2 -n 5 --mem=30G --time=20:00:00
+sbatch  -J rn_1k scripts/run_esbn.sh rn_notcn 1 250 '1k' 4 1 9
+sbatch -J rn_1k scripts/run_esbn.sh rn_notcn 1 250 '1k' 4 10 18
+sbatch -J rn_1k scripts/run_esbn.sh rn_notcn 1 250 '1k' 4 19 23
+
+sbatch -J rn_500 scripts/run_esbn.sh rn_notcn 1 250 '500' 4 1 9
+sbatch -J rn_500 scripts/run_esbn.sh rn_notcn 1 250 '500' 4 10 18
+sbatch -J rn_500 scripts/run_esbn.sh rn_notcn 1 250 '500' 4 19 23
+
+sbatch -J rn_10k scripts/run_esbn.sh rn_notcn 1 250 '10k' 4 1 9
+sbatch -J rn_10k scripts/run_esbn.sh rn_notcn 1 250 '10k' 4 10 18
+sbatch -J rn_10k scripts/run_esbn.sh rn_notcn 1 250 '10k' 4 19 23
+
+sbatch -J rn_10k scripts/run_esbn.sh rn_notcn 1 250 '10k' 4 10 10
+sbatch -J rn_10k scripts/run_esbn.sh rn_notcn 1 250 '10k' 4 13 15
+sbatch -J rn_10k scripts/run_esbn.sh rn_notcn 1 250 '10k' 4 16 18
+
+
+sbatch -J rn_5k scripts/run_esbn.sh rn_notcn 1 250 '5k' 4 1 9
+sbatch -J rn_5k scripts/run_esbn.sh rn_notcn 1 250 '5k' 4 10 18
+sbatch -J rn_5k scripts/run_esbn.sh rn_notcn 1 250 '5k' 4 19 23
+
+#####
+sbatch -J routine-test -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=4:00:00 scripts/run_esbn_routine_all.sh 1
+######
+
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 5 5 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 15 15 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_5.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_5.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_7.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_17.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_20.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 7 7 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_22.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 4 4 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_23.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_23.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_21.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 2 2 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5a/task_20.ckpt"
+scripts/run_esbn_test.sh esbn_qr_m_v5a 1 150 '10k' 4 20 20 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_21.ckpt"
+
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 10 10 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_15.ckpt"
+
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 5 5 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_1.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 15 15 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_1.ckpt"
+scripts/run_esbn_test.sh resnet50 1 150 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_1.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_5.ckpt"
+scripts/run_esbn_test.sh resnet50 1 150 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_5.ckpt"
+scripts/run_esbn_test.sh resnet50 1 150 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_7.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_17.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_20.ckpt"
+scripts/run_esbn_test.sh resnet50 1 150 '10k' 4 7 7 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_22.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 4 4 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_23.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_23.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_21.ckpt"
+scripts/run_esbn_test.sh resnet50 1 150 '10k' 4 19 19 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_21.ckpt"
+scripts/run_esbn_test.sh resnet50 2 150 '10k' 4 20 20 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/resnet50/task_21.ckpt"
+
+sbatch -J esbn_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=00:30:00 
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 21 21 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_19.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_19.ckpt" # 1-out
+
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 17 17 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_21.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_21.ckpt" x
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 20 20 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_21.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_21.ckpt" 
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 19 19 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_21.ckpt" 
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 9 9 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_12.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 17 17 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_12.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 7 7 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_13.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 5 5 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_13.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 12 12 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_13.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 10 10 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_18.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 16 16 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_18.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 18 18 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_16.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 18 18 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_10.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 9 9 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_14.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 7 7 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_22.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 5 5 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_22.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_7.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 5 5 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_7.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 13 13 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_7.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_5.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_5.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 8 7 7 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_5.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 16 16 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_5.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 18 18 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_5.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 19 19 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_20.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 16 16 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_20.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 7 7 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_6.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 5 5 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_6.ckpt" x
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 17 17 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 15 15 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 5 5 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 22 22 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_1.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_1.ckpt"
+
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_17.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_17.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 12 12 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_17.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 1 1 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_15.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 11 11 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_3.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 2 2 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_3.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 4 4 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_3.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 11 11 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_4.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 8 8 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_4.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 3 3 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_4.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 2 2 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_4.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 23 23 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_4.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 17 17 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_8.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 4 4 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_8.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 13 13 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_8.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 9 9 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_23.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 4 4 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_23.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 23 23 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_9.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 12 12 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_9.ckpt"
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 14 14 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_9.ckpt"
+
+scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '10k' 4 3 3 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/svrt_10k_step4_weight/task_2.ckpt"
+
+scripts/run_esbn_abstract.sh esbn_qr_m_v5c_abstract 1 500 '10k' 4 2 2 "/users/mvaishn1/data/data/mvaishn1/svrt/data_out/esbn_qr_m_v5c/10k/task_2.ckpt"
+
+############################# RESNET50 #####################
+sbatch -J esbn_r50_op_sda_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=30G --time=20:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5a 2 300 '10k' 4
+sbatch -J esbn_r50_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 2 300 '10k' 4
+sbatch -J esbn_r50_op_sdc_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdc.sh resnet50 2 300 '10k' 4
+sbatch -J esbn_r50_op_sdd_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=30G --time=20:00:00 scripts/run_op_esbn_sdd.sh resnet50 2 300 '10k' 4
+sbatch -J esbn_r50_op_sra_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=30G --time=20:00:00 scripts/run_op_esbn_sra.sh resnet50 2 300 '10k' 4
+sbatch -J esbn_r50_op_srb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=30G --time=20:00:00 scripts/run_op_esbn_srb.sh resnet50 2 300 '10k' 4
+
+sbatch -J resnet50_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn_resnet.sh resnet50 1 300 '10k' 4 1 1 .0008490729637755242 .0009578961983321222 
+sbatch -J resnet50_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn_resnet.sh resnet50 1 300 '10k' 4 21 21 .00044924516882183534 .00025242921181427665
+sbatch -J resnet50_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn_resnet.sh resnet50 1 300 '10k' 4 16 16 .0008117144270155254 .0008734541545870403
+sbatch -J resnet50_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn_resnet.sh resnet50 1 300 '10k' 4 12 12 .0007514175711585728 .000657034172143218
+sbatch -J resnet50_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn_resnet.sh resnet50 1 300 '10k' 4 15 15 .0007514175711585728 .000657034172143218
+sbatch -J resnet50_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_esbn_resnet.sh resnet50 1 300 '10k' 4 2 2
+sbatch -J resnet50_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn_resnet.sh resnet50 1 300 '10k' 4 15 15
+
+
+############################# single memory block and running experiments V5b #####################
+sbatch -J esbn_qr_m_v5c_op_sda_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sda_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sda_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sda_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sdb_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sdc_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdc_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdc_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdc_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sdd_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdd_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdd_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdd_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sra_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sra_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sra_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sra_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_srb_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_srb_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_srb_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_srb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+############ he 
+sbatch -J esbn_qr_m_v5c_op_sda_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sda_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sda_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=3:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sda_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sdb_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sdc_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdc_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdc_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdc_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sdd_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdd_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdd_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdd_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sra_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sra_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sra_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sra_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_srb_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_srb_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_srb_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_srb_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_20_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5c 1 300 '10k' 4 5
+sbatch -J esbn_qr_m_v5c_op_19_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5c 1 300 '10k' 4 19
+sbatch -J esbn_qr_m_v5c_op_8_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5c 1 300 '10k' 4 19
+
+sbatch -J esbn_qr_m_v5c_op_sd_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5c 1 300 '10k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '10k' 4
+sbatch -J esbn_qr_m_v5c_op_sr_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sda_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sda_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '10k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sd_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sr_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5c 1 300 '1k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sd_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '5k' 4
+sbatch -J esbn_qr_m_v5c_op_sr_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5c 1 300 '5k' 4
+
+sbatch -J esbn_qr_m_v5c_op_sd_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '500' 4
+sbatch -J esbn_qr_m_v5c_op_sr_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5c 1 300 '500' 4
+
+
+######### CALMIP
+
+sbatch -J esbn_qr_m_v5c_op_sda_1k -p gpu --gres=gpu:1 -n 9 --mem=30G --time=30:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdb_1k -p gpu --gres=gpu:1 -n 9 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdc_1k -p gpu --gres=gpu:1 -n 9 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdc.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sdd_1k -p gpu --gres=gpu:1 -n 9 --mem=30G --time=30:00:00 scripts/run_op_esbn_sdd.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_sra_1k -p gpu --gres=gpu:1 -n 9 --mem=30G --time=30:00:00 scripts/run_op_esbn_sra.sh esbn_qr_m_v5c 1 300 '1k' 4
+sbatch -J esbn_qr_m_v5c_op_srb_1k -p gpu --gres=gpu:1 -n 9 --mem=30G --time=30:00:00 scripts/run_op_esbn_srb.sh esbn_qr_m_v5c 1 300 '1k' 4
+
+
+######### running experiments
+
+sbatch -J esbn_qr_m_v5c_s4_10k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_additive 1 300 '10k' 4 1 1 
+sbatch -J esbn_qr_m_v5c_s4_10k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_additive 1 300 '10k' 4 5 5
+sbatch -J esbn_qr_m_v5c_s4_10k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_additive 1 300 '10k' 4 7 7
+sbatch -J esbn_qr_m_v5c_s4_10k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_additive 1 300 '10k' 4 21 21
+sbatch -J esbn_qr_m_v5c_s4_10k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_additive 1 300 '10k' 4 23 23
+
+
+sbatch -J esbn_qr_m_v5c_s4_500 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_500 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_500 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 19 23
+
+
+sbatch -J esbn_qr_m_v5c_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '1k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '1k' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '1k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '10k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '10k' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '10k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '10k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '10k' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '10k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_1_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '10k' 4 2 2
+
+sbatch -J esbn_qr_m_v5c_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '1k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '1k' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '1k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 1 9 
+sbatch -J esbn_qr_m_v5c_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 10 18
+sbatch -J esbn_qr_m_v5c_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '500' 4 19 23
+
+############# RN with step 4:
+sbatch -J rn_s4_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '10k' 4 1 9 
+sbatch -J rn_s4_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '10k' 4 10 18
+sbatch -J rn_s4_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '10k' 4 19 23
+
+sbatch -J rn_s4_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '5k' 4 1 9 
+sbatch -J rn_s4_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '5k' 4 10 18
+sbatch -J rn_s4_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '5k' 4 19 23
+
+sbatch -J rn_s4_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '1k' 4 1 9 
+sbatch -J rn_s4_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '1k' 4 10 18
+sbatch -J rn_s4_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '1k' 4 19 23
+
+sbatch -J rn_s4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '500' 4 1 9 
+sbatch -J rn_s4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '500' 4 10 18
+sbatch -J rn_s4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '500' 4 19 23
+
+sbatch -J rn_s4_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '10k' 4 1 9 
+sbatch -J rn_s4_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '10k' 4 10 18
+sbatch -J rn_s4_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '10k' 4 19 23
+
+sbatch -J rn_s4_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '5k' 4 1 9 
+sbatch -J rn_s4_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '5k' 4 10 18
+sbatch -J rn_s4_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '5k' 4 19 23
+
+sbatch -J rn_s4_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '1k' 4 1 9 
+sbatch -J rn_s4_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '1k' 4 10 18
+sbatch -J rn_s4_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '1k' 4 19 23
+
+sbatch -J rn_s4_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '500' 4 1 9 
+sbatch -J rn_s4_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '500' 4 10 18
+sbatch -J rn_s4_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_s4 1 300 '500' 4 19 23
+
+
+
+############# run_esbn_noise
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_noise 1 300 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_noise 1 300 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5c_noise 1 300 '5k' 4 19 23
+
+
+sbatch -J rn_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_noise 1 500 '5k' 64 1 9 
+sbatch -J rn_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_noise 1 500 '5k' 64 10 18
+sbatch -J rn_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_noise 1 500 '5k' 64 19 23
+
+sbatch -J rn_noise_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_noise 2 300 '5k' 64 1 9 
+sbatch -J rn_noise_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_noise 2 300 '5k' 64 10 18
+sbatch -J rn_noise_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh rn_noise 2 300 '5k' 64 19 23
+
+############# Ablation studies:
+sbatch -J esbn_qr_m_v5c_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_qr_m_v5c 1 300 '5k' 4 21 21 
+
+sbatch -J esbn_qr_m_v5c_noise_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '10k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_noise_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '10k' 4 10 18
+sbatch -J esbn_qr_m_v5c_noise_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '10k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '5k' 4 1 23 .1
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '5k' 4 1 23 .15
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_noise.sh esbn_qr_m_v5c_noise 1 1000 '5k' 4 1 23 .2
+
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_rn_noise.sh rn_noise 1 500 '5k' 4 1 23 .1
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_rn_noise.sh rn_noise 1 500 '5k' 4 1 23 .15
+sbatch -J esbn_qr_m_v5c_noise_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_rn_noise.sh rn_noise 1 500 '5k' 4 1 23 .2
+
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_scale_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '10k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_scale_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '10k' 4 10 18
+sbatch -J esbn_qr_m_v5c_scale_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '10k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale.sh esbn_qr_m_v5c 1 500 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale5k.sh esbn_qr_m_v5c 1 500 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale5k.sh esbn_qr_m_v5c 1 500 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5c_scale_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_scale5k.sh esbn_qr_m_v5c 1 500 '5k' 4 19 23
+
+"esbn_qr_m_v5c_no_allg",
+	"esbn_qr_m_v5c_no_out",
+	"esbn_qr_m_v5c_no_g",
+	"esbn_qr_m_v5c_no_wkt",
+	"esbn_qr_m_v5c_no_wk"
+
+sbatch -J esbn_qr_m_v5c_abl_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation.sh esbn_qr_m_v5c_no_allg 1 300 '10k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_abl_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation.sh esbn_qr_m_v5c_no_out 1 300 '10k' 4 10 18
+sbatch -J esbn_qr_m_v5c_abl_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation.sh esbn_qr_m_v5c_no_g 1 300 '10k' 4 19 23
+sbatch -J esbn_qr_m_v5c_abl_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation.sh esbn_qr_m_v5c_no_wkt 1 300 '10k' 4 19 23
+sbatch -J esbn_qr_m_v5c_abl_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation.sh esbn_qr_m_v5c_no_wk 1 300 '10k' 4 19 23
+
+sbatch -J esbn_qr_m_v5c_abl_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation1k.sh esbn_qr_m_v5c_no_allg 1 300 '1k' 4 1 9 
+sbatch -J esbn_qr_m_v5c_abl_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation1k.sh esbn_qr_m_v5c_no_out 1 300 '1k' 4 10 18
+sbatch -J esbn_qr_m_v5c_abl_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation1k.sh esbn_qr_m_v5c_no_g 1 300 '1k' 4 19 23
+sbatch -J esbn_qr_m_v5c_abl_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation1k.sh esbn_qr_m_v5c_no_wkt 1 300 '1k' 4 19 23
+sbatch -J esbn_qr_m_v5c_abl_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation1k.sh esbn_qr_m_v5c_no_wk 1 300 '1k' 4 19 23
+sbatch -J esbn_qr_m_v5c_abl_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation1k.sh esbn_qr_m_v5c_no_tcn 1 300 '5k' 4 19 23
+sbatch -J esbn_qr_m_v5c_abl_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_ablation1k.sh esbn_qr_m_v5c_SA 1 300 '1k' 4 19 23
+
+
+############################# single memory block and running experiments V5a #####################
+sbatch -J esbn_qr_m_op_sd_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5a 1 300 '10k' 4
+sbatch -J esbn_qr_m_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '10k' 4
+sbatch -J esbn_qr_m_op_sr_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5a 1 300 '10k' 4
+
+sbatch -J esbn_v5a_op_sda_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '500' 4
+sbatch -J esbn_v5a_op_sdb_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '1k' 4
+sbatch -J esbn_v5a_op_sdb_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '5k' 4
+sbatch -J esbn_v5a_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '10k' 4
+
+sbatch -J esbn_v5a_op_sda_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sda.sh esbn_qr_m_v5a 1 300 '10k' 4
+sbatch -J esbn_v5a_op_sdb_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=7:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_op_sd_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5a 1 300 '1k' 4
+sbatch -J esbn_qr_m_op_sdb_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '1k' 4
+sbatch -J esbn_qr_m_op_sr_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5a 1 300 '1k' 4
+
+sbatch -J esbn_qr_m_op_sd_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5a 1 300 '5k' 4
+sbatch -J esbn_qr_m_op_sdb_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '5k' 4
+sbatch -J esbn_qr_m_op_sr_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5a 1 300 '5k' 4
+
+sbatch -J esbn_qr_m_op_sd_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v5a 1 300 '500' 4
+sbatch -J esbn_qr_m_op_sdb_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sdb.sh esbn_qr_m_v5a 1 300 '500' 4
+sbatch -J esbn_qr_m_op_sr_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v5a 1 300 '500' 4
+
+
+sbatch -J esbn_qr_m_op_sd_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=70:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v2 1 300 '10k' 4
+sbatch -J esbn_qr_m_op_sr_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=70:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v2 1 300 '10k' 4
+
+##### SD
+sbatch -J esbn_qr_m_v5a_s4_sd500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_1ksr.sh esbn_qr_m_v5a 1 300 '500' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_sd1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_1ksr.sh esbn_qr_m_v5a 1 300 '1k' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_sd5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_1ksr.sh esbn_qr_m_v5a 1 300 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5a_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '500' 4 1 1 
+sbatch -J esbn_qr_m_v5a_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 16 16 
+sbatch -J esbn_qr_m_v5a_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=1:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '5k' 4 16 16 
+
+sbatch -J esbn_qr_m_v5a_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '10k' 4 1 4 
+sbatch -J esbn_qr_m_v5a_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '10k' 4 5 8
+sbatch -J esbn_qr_m_v5a_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '10k' 4 9 12
+sbatch -J esbn_qr_m_v5a_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '10k' 4 13 16 
+sbatch -J esbn_qr_m_v5a_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '10k' 4 17 20
+sbatch -J esbn_qr_m_v5a_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '10k' 4 21 23
+
+sbatch -J esbn_qr_m_v5a_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 19 23
+
+sbatch -J esbn_qr_m_v5a_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '500' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '500' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '500' 4 19 23
+
+sbatch -J esbn_qr_m_v5a_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5a_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '5k' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '5k' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '5k' 4 19 23
+
+sbatch -J esbn_qr_m_v5a_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 19 23
+
+sbatch -J esbn_qr_m_v5a_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '1k' 4 19 23
+
+sbatch -J esbn_qr_m_v5a_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '500' 4 1 9 
+sbatch -J esbn_qr_m_v5a_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '500' 4 10 18
+sbatch -J esbn_qr_m_v5a_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v5a 1 300 '500' 4 19 23
+
+############################# single memory block and running experiments #####################
+sbatch -J esbn_qr_m_op_sd_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m 1 300 '10k' 4
+sbatch -J esbn_qr_m_op_sr_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m 1 300 '10k' 4
+sbatch -J esbn_qr_m_op_sd_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=70:00:00 scripts/run_op_esbn_sd.sh esbn_qr_m_v2 1 300 '10k' 4
+sbatch -J esbn_qr_m_op_sr_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=70:00:00 scripts/run_op_esbn_sr.sh esbn_qr_m_v2 1 300 '10k' 4
+
+sbatch -J esbn_qr_m_v2_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v2 1 300 '10k' 4 1 9 
+sbatch -J esbn_qr_m_v2_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v2 1 300 '10k' 4 10 18
+sbatch -J esbn_qr_m_v2_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m_v2 1 300 '10k' 4 19 23
+
+sbatch -J esbn_qr_m_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m 1 300 '10k' 4 1 9 
+sbatch -J esbn_qr_m_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m 1 300 '10k' 4 10 18
+sbatch -J esbn_qr_m_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m 1 300 '10k' 4 19 23
+sbatch -J esbn_qr_m_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_qr_m 1 300 '10k' 8 19 19
+
+############################ Baseline for SVRT v0 version ###############################
+sbatch -J esbn_v0_16_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '500' 2 1 9 
+sbatch -J esbn_v0_16_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '500' 2 10 18
+sbatch -J esbn_v0_16_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '500' 2 19 23
+
+sbatch -J esbn_v0_16_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '1k' 4 1 9 
+sbatch -J esbn_v0_16_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '1k' 4 10 18
+sbatch -J esbn_v0_16_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '1k' 4 19 23
+
+sbatch -J esbn_v0_16_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '5k' 4 1 9 
+sbatch -J esbn_v0_16_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '5k' 4 10 18
+sbatch -J esbn_v0_16_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '5k' 4 19 23
+
+sbatch -J esbn_v0_16_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '500' 4 1 9 
+sbatch -J esbn_v0_16_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '500' 4 10 18
+sbatch -J esbn_v0_16_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '500' 4 19 23
+
+sbatch -J esbn_v0_16_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '1k' 4 1 9 
+sbatch -J esbn_v0_16_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '1k' 4 10 18
+sbatch -J esbn_v0_16_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '1k' 4 19 23
+
+
+sbatch -J esbn_v0_16_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '10k' 4 1 9 
+sbatch -J esbn_v0_16_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '10k' 4 10 18
+sbatch -J esbn_v0_16_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 500 '10k' 4 19 23
+
+sbatch -J esbn_trv4_s2_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 300 '15k' 2 1 9 
+sbatch -J esbn_trv4_s2_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 300 '15k' 2 10 18
+sbatch -J esbn_trv4_s2_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_v0_16 1 300 '15k' 2 19 23
+
+
+############################ Ablation with time steps on ESBN after optuna ###############################
+
+sbatch -J esbn_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn_test.sh esbn_trv4_conv 1 300 '500' 16 1 1 0.0009763152912342 0.0003271040427126 "/gpfs/data/tserre/data/mvaishn1/svrt/data_out/esbn/runs/1/500/2021-12-12/22-32-27/checkpoints/epoch-94-val_acc_top1-0.847.ckpt"
+scripts/run_esbn.sh esbn_v0_16 1 300 '1k' 2 1 1 
+
+sbatch -J esbn_trv4_s2_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '1k' 2 1 9 
+sbatch -J esbn_trv4_s2_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '1k' 2 10 18
+sbatch -J esbn_trv4_s2_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '1k' 2 19 23
+
+sbatch -J esbn_trv4_s2_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '5k' 2 1 9 
+sbatch -J esbn_trv4_s2_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '5k' 2 10 18
+sbatch -J esbn_trv4_s2_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '5k' 2 19 23
+
+sbatch -J esbn_trv4_s2_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '10k' 2 1 9 
+sbatch -J esbn_trv4_s2_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '10k' 2 10 18
+sbatch -J esbn_trv4_s2_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '10k' 2 19 23
+
+sbatch -J esbn_trv4_s2_15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '15k' 2 1 9 
+sbatch -J esbn_trv4_s2_15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '15k' 2 10 18
+sbatch -J esbn_trv4_s2_15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '15k' 2 19 23
+
+########## Freeze conv weights ############
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 1 3 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 4 6
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 7 9
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 10 12
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 13 15 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 16 18 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 19 21 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 2 21 23 
+
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 1 3 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 4 6
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 7 9
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 10 12
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 13 15 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 16 18 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 19 21 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=15:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '10k' 4 21 23 
+
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 1 3 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 4 6
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 7 9
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 10 12
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 13 15 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 16 18 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 19 21 
+sbatch -J esbn_trv4_s1_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 21 23 
+
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 19 21 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_freeze.sh esbn_trv4_conv 1 300 '500' 8 21 23 
+
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 1 3 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 4 6
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 7 9
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 10 12
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 13 15 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 16 18 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 19 21 
+sbatch -J esbn_trv4_s1_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 2 21 23 
+
+
+sbatch -J esbn_trv2_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv2 1 300 '500' 4 3 3 
+sbatch -J esbn_trv4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv_no_c 1 300 '500' 4 14 14 
+sbatch -J esbn_trv4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv_no_lstmout_c 1 300 '500' 4 14 14 
+sbatch -J esbn_trv4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv_no_lstmout 1 300 '500' 4 3 3 
+sbatch -J esbn_trv4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv4_no_allg_c 1 300 '500' 4 1 23 
+sbatch -J esbn_trv4_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv4_no_allg 1 300 '500' 4 1 23 
+
+
+sbatch -J esbn_trv2_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv2 1 300 '5k' 4 1 23 
+sbatch -J esbn_trv4_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv_no_c 1 300 '5k' 4 1 23 
+sbatch -J esbn_trv4_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv4_conv_no_lstmout_c 1 300 '5k' 4 1 23 
+sbatch -J esbn_trv4_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv4_conv_no_lstmout 1 300 '5k' 4 1 23 
+sbatch -J esbn_trv4_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv4_no_allg_c 1 300 '5k' 4 1 23 
+sbatch -J esbn_trv4_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv4_no_allg 1 300 '5k' 4 1 23 
+
+############################ ESBN after optuna ###############################
+sbatch -J esbn_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv_b 1 300 '500' 4 2 23 0.0007357648801639943 0.0007902327067460363
+
+
+sbatch -J esbn_s4_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv 1 300 '500' 4 2 23 0.00030571667663168773 0.0006598470712514473
+sbatch -J esbn_s8_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv 1 300 '500' 8 2 23 0.0006226046277405165 0.0005252210853059147
+sbatch -J esbn_s16_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 16 2 23
+
+sbatch -J esbn_s4_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 4 1 23 0.0007514175711585728 0.000657034172143218
+sbatch -J esbn_s8_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=10:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 8 1 23 0.0006226046277405165 0.0005252210853059147
+sbatch -J esbn_s16_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 '500' 16 1 23
+
+sbatch -J esbn_s4_1k --account=carney-tserre-condo -C titanrtx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv 1 300 1k 4 1 23
+sbatch -J esbn_s8_1k --account=carney-tserre-condo -C titanrtx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv 1 300 1k 8 1 23
+sbatch -J esbn_s16_1k --account=carney-tserre-condo -C titanrtx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_1k.sh esbn_trv4_conv 1 300 1k 16 1 23
+
+sbatch -J esbn_s4_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 5k 4 1 23
+sbatch -J esbn_s8_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 5k 8 1 23
+sbatch -J esbn_s16_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 5k 16 1 23
+
+sbatch -J esbn_s4_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 10k 4 1 23
+sbatch -J esbn_s8_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 10k 8 1 23
+
+############ he 
+sbatch -J esbn_s4_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_5k.sh esbn_trv4_conv 1 300 5k 4 1 23
+sbatch -J esbn_s8_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_5k.sh esbn_trv4_conv 1 300 5k 8 1 23
+sbatch -J esbn_s16_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_5k.sh esbn_trv4_conv 1 300 5k 16 1 23
+
+sbatch -J esbn_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=2:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 10k 4 6 6 0.0002419554585722 0.0003772740251072
+sbatch -J esbn_s8_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn_5k.sh esbn_trv4_conv 1 300 10k 8 1 23
+sbatch -J esbn_s16_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_5k.sh esbn_trv4_conv 1 300 10k 16 1 23
+
+sbatch -J esbn_s4_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 15k 4 21 21 0.0002419554585722 0.0003772740251072
+sbatch -J esbn_s4_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 15k 4 6 6 0.0001920796235603235 0.0002125146757675093
+sbatch -J esbn_s4_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 15k 4 6 6 0.0002068564848068674 2.1707801727443535e-05
+sbatch -J esbn_s4_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=5:00:00 scripts/run_esbn.sh esbn_trv4_conv 1 300 10k 4 8 8 0.00014985683364384972 0.0005043792960537466
+sbatch -J esbn_s8_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_esbn_5k.sh esbn_trv4_conv 1 300 15k 8 1 23
+sbatch -J esbn_s16_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_esbn_5k.sh esbn_trv4_conv 1 300 15k 16 1 23
+
+############################ ESBN for optuna ###############################
+sbatch -J esbn_s4_op_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv_b 1 300 '500' 4
+sbatch -J esbn_s8_op_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv_b 1 300 '500' 8
+sbatch -J esbn_s16_op_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv_b 1 300 '500' 16
+
+sbatch -J esbn_s4_op_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv_b 1 300 '500' 4
+sbatch -J esbn_s8_op_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv_b 1 300 '500' 8
+sbatch -J esbn_s16_op_500 --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv_b 1 300 '500' 16
+
+sbatch -J esbn_s4_op_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv 1 300 1k 4
+sbatch -J esbn_s8_op_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv 1 300 1k 8
+sbatch -J esbn_s16_op_1k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn.sh esbn_trv4_conv 1 300 1k 16
+
+sbatch -J esbn_s4_op_10k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 10k 4
+
+############ he
+sbatch -J esbn_s4_op_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 1k 4
+sbatch -J esbn_s8_op_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 1k 8
+sbatch -J esbn_s16_op_1k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 1k 16
+
+sbatch -J esbn_s4_op_5k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn.sh esbn_trv4_conv 1 300 5k 4
+sbatch -J esbn_s8_op_5k --account=carney-tserre-condo -C titanrtx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn.sh esbn_trv4_conv 1 300 5k 8
+sbatch -J esbn_s16_op_5k --account=carney-tserre-condo -C titanrtx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn.sh esbn_trv4_conv 1 300 5k 16
+
+############ he
+sbatch -J esbn_s4_op_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 5k 4
+sbatch -J esbn_s8_op_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 5k 8
+sbatch -J esbn_s16_op_5k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 5k 16
+
+sbatch -J esbn_s4_op_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 10k 4
+sbatch -J esbn_s8_op_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 10k 8
+sbatch -J esbn_s16_op_10k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 10k 16
+
+sbatch -J esbn_s4_op_15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 15k 4
+sbatch -J esbn_s8_op_15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 15k 8
+sbatch -J esbn_s16_op_15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 15k 16
+
+sbatch -J esbn_s4_op_20k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 20k 4
+sbatch -J esbn_s8_op_20k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 20k 8
+sbatch -J esbn_s16_op_20k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_5k.sh esbn_trv4_conv 1 300 20k 16
+
+sbatch -J esbn_s4_op_15k -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 15k 4
+
+sbatch -J esbn_s4_op_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 500 4
+sbatch -J esbn_s8_op_500 -C v100 -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run_op_esbn_1k.sh esbn_trv4_conv 1 300 500 8
+
+############################ DEIT ###############################
+sbatch -J diet-small-13-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 13 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/13/2M/2021-12-05/04-54-05
+sbatch -J diet-small-1-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 1 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/1/2M/2021-12-05/04-52-07
+sbatch -J diet-small-16-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 16 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/16/2M/2021-12-05/05-12-07
+
+sbatch -J diet-small-6-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 6 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/6/2M/2021-12-04/13-14-00
+sbatch -J diet-small-21-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 21 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/21/2M/2021-12-04/13-02-21
+sbatch -J diet-small-7-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 7 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/7/2M/2021-12-04/13-02-21
+sbatch -J diet-small-3-2M  --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 3 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/3/2M/2021-12-04/11-25-03
+
+sbatch -J diet-small-17-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 17 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/17/2M/2021-12-04/17-11-04
+sbatch -J diet-small-5-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 5 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/5/2M/2021-12-04/18-03-49
+sbatch -J diet-small-19-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 19 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/19/2M/2021-12-04/18-26-04
+sbatch -J diet-small-20-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 20 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/20/2M/2021-12-04/18-26-04
+
+sbatch -J diet-small-15-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 15 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/15/2021-12-03/13-34-47
+sbatch -J diet-small-10-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 10 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/10/2M/2021-12-05/17-25-15
+sbatch -J diet-small-12-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 12 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/12/2021-12-03/13-54-46
+sbatch -J diet-small-8-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 8 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/8/2M/2021-12-06/15-10-25
+
+sbatch -J diet-small-23-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 23 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/23/2M/2021-12-08/15-25-50
+sbatch -J diet-small-9-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 9 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/9/2M/2021-12-07/15-20-09
+
+sbatch -J diet-small-14-2M -C v100 -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 14 2M False /gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/14/2M/2021-12-08/23-36-10
+#####################  2M ############################
+
+sbatch -J diet-small-7-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 7 2M False
+sbatch -J diet-small-21-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 21 2M False
+sbatch -J diet-small-6-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 6 2M False
+sbatch -J diet-small-17-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 17 2M False
+sbatch -J diet-small-5-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 5 2M False
+sbatch -J diet-small-19-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 19 2M False
+sbatch -J diet-small-20-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 20 2M False
+sbatch -J diet-small-1-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 1 2M False
+sbatch -J diet-small-13-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 13 2M False
+sbatch -J diet-small-22-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 22 2M False
+sbatch -J diet-small-16-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 16 2M False
+
+67,69
+
+sbatch -J diet-small-9-2M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:2 -n 5 --mem=40G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 250 9 2M False '/gpfs/data/tserre/data/mvaishn1/svrt/data_out/runs/9/2M/2021-12-04/11-25-03/last.ckpt'
+
+sbatch -J diet-small-13-2M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 13 2M False
+sbatch -J diet-small-22-2M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 22 2M False
+sbatch -J diet-small-16-2M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 16 2M False
+
+sbatch -J diet-small-2-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 2 2M False
+sbatch -J diet-small-11-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 11 2M False
+sbatch -J diet-small-3-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 3 2M False
+sbatch -J diet-small-4-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 4 2M False
+sbatch -J diet-small-18-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 18 2M False
+sbatch -J diet-small-10-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 10 2M False
+sbatch -J diet-small-8-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 8 2M False
+sbatch -J diet-small-23-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 23 2M False
+sbatch -J diet-small-9-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=30:00:00 scripts/run.sh deit_small_patch16_224 2 350 9 2M False
+sbatch -J diet-small-14-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 14 2M False
+sbatch -J diet-small-15-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 15 2M False
+sbatch -J diet-small-12-2M -p gpu-he --gres=gpu:2 -n 5 --mem=50G --time=100:00:00 scripts/run.sh deit_small_patch16_224 2 350 12 2M False
+
+
+
+#####################  15k ############################
+
+sbatch -J diet-small-7-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 7 15k True
+sbatch -J diet-small-21-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 21 15k True
+sbatch -J diet-small-6-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 6 15k True
+sbatch -J diet-small-17-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 17 15k True
+sbatch -J diet-small-5-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 5 15k True
+sbatch -J diet-small-19-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 19 15k True
+sbatch -J diet-small-20-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 20 15k True
+sbatch -J diet-small-1-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 1 15k True
+sbatch -J diet-small-13-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 13 15k True
+sbatch -J diet-small-22-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 22 15k True
+sbatch -J diet-small-16-15k --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 16 15k True
+
+sbatch -J diet-small-13-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 13 15k True
+sbatch -J diet-small-22-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 22 15k True
+sbatch -J diet-small-16-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 16 15k True
+
+sbatch -J diet-small-2-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 2 15k True
+sbatch -J diet-small-11-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 11 15k True
+sbatch -J diet-small-3-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 3 15k True
+sbatch -J diet-small-4-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 4 15k True
+sbatch -J diet-small-18-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 18 15k True
+sbatch -J diet-small-10-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 10 15k True
+sbatch -J diet-small-8-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 8 15k True
+sbatch -J diet-small-23-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 23 15k True
+sbatch -J diet-small-9-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 9 15k True
+sbatch -J diet-small-14-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 14 15k True
+sbatch -J diet-small-15-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 15 15k True
+sbatch -J diet-small-12-15k -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 12 15k True
+
+
+
+#####################  1M with pretrained weights ############################
+which cannot be trained: 13,20,5,21,6
+lr tried: .0001, .0005
+sbatch -J diet-small-13-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 13 1M True .0005
+sbatch -J diet-small-20-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 20 1M True .0005
+sbatch -J diet-small-21-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 21 1M True .0005
+sbatch -J diet-small-6-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 6 1M True .0005
+sbatch -J diet-small-5-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 5 1M True .0005
+
+sbatch -J diet-small-7-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 7 1M True
+sbatch -J diet-small-21-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 21 1M True
+sbatch -J diet-small-6-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 6 1M True
+sbatch -J diet-small-17-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 17 1M True
+sbatch -J diet-small-5-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 5 1M True
+sbatch -J diet-small-19-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 19 1M True
+sbatch -J diet-small-20-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 20 1M True
+sbatch -J diet-small-1-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 1 1M True
+sbatch -J diet-small-13-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 13 1M True
+sbatch -J diet-small-22-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 22 1M True
+sbatch -J diet-small-16-1M --account=carney-tserre-condo -C quadrortx -p gpu --gres=gpu:1 -n 3 --mem=30G --time=100:00:00 scripts/run.sh deit_small_patch16_224 1 250 16 1M True
+
+sbatch -J diet-small-13-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 13 1M True
+sbatch -J diet-small-22-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 22 1M True
+sbatch -J diet-small-16-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=50:00:00 scripts/run.sh deit_small_patch16_224 1 350 16 1M True
+
+sbatch -J diet-small-2-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 2 1M True
+sbatch -J diet-small-11-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 11 1M True
+sbatch -J diet-small-3-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 3 1M True
+sbatch -J diet-small-4-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 4 1M True
+sbatch -J diet-small-18-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 18 1M True
+sbatch -J diet-small-10-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 10 1M True
+sbatch -J diet-small-8-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 8 1M True
+sbatch -J diet-small-23-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=20:00:00 scripts/run.sh deit_small_patch16_224 1 350 23 1M True
+sbatch -J diet-small-9-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 9 1M True
+sbatch -J diet-small-14-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 14 1M True
+sbatch -J diet-small-15-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 15 1M True
+sbatch -J diet-small-12-1M -p gpu-he --gres=gpu:1 -n 3 --mem=30G --time=30:00:00 scripts/run.sh deit_small_patch16_224 1 350 12 1M True
+
+
+27th Oct 2021
+sbatch -J 512-herbarium-new scripts/run_herbarium_he.sh resnet50_test 1 0.1 0.0001 100 512 ""
+sbatch -J 256-herbarium-old scripts/run_herbarium_he.sh resnet50_test 1 0.1 0.0001 100 256 ""
+
+
+26 Oct 2021
+Using herbarium pretrained weights on cleaned leaves:
+
+sbatch -J leavesbg-512-herbarium-100 -p gpu-he --gres=gpu:2 -n 5 --mem=70G --time=40:00:00 scripts/run_v3_th100.sh resnet50_op 2 0.00018473489286541738 2.1251467576750932e-05 40 512 "/users/mvaishn1/data/data/mvaishn1/fossil/weights/512_th100_herbarium_r50.ckpt" "herbarium"
+
+sbatch -J lr-leavesbg-512-herbarium-10 -p gpu-he --gres=gpu:1 -n 3 --mem=50G --time=20:00:00 scripts/run_v3_th10_he.sh resnet50_op 1 40 512 0.00015758251976472897 4.333275404382255e-05 "/users/mvaishn1/data/data/mvaishn1/fossil/weights/512_th100_herbarium_r50.ckpt" "herbarium" False
+sbatch -J lr-leavesbg-512-herbarium-20 -p gpu-he --gres=gpu:1 -n 3 --mem=50G --time=20:00:00 scripts/run_v3_th20_he.sh resnet50_op 1 40 512 0.00010444744884166238 1.8692982073856302e-05 "/users/mvaishn1/data/data/mvaishn1/fossil/weights/512_th100_herbarium_r50.ckpt" "herbarium" False
+sbatch -J lr-leavesbg-512-herbarium-50 -p gpu-he --gres=gpu:1 -n 3 --mem=50G --time=20:00:00 scripts/run_v3_th50_he.sh resnet50_op 1 40 512 0.00010410161868636597 2.2274832211063507e-05 "/users/mvaishn1/data/data/mvaishn1/fossil/weights/512_th100_herbarium_r50.ckpt" "herbarium" False
+sbatch -J lr-leavesbg-512-herbarium-100 -p gpu-he --gres=gpu:1 -n 3 --mem=50G --time=20:00:00 scripts/run_v3_th100_he.sh resnet50_op 1 40 512 0.00013664946714066607 2.0925207830901052e-05 "/users/mvaishn1/data/data/mvaishn1/fossil/weights/512_th100_herbarium_r50.ckpt" "herbarium" False
+sbatch -J lr-leavesbg-512-herbarium-100 -p gpu --gres=gpu:1 -n 3 --mem=50G --time=20:00:00 scripts/run_v3_th100.sh resnet50_op 1 40 512 0.00013664946714066607 2.0925207830901052e-05 "/users/mvaishn1/data/data/mvaishn1/fossil/weights/512_th100_herbarium_r50.ckpt" "herbarium" False
+

@@ -1,0 +1,8 @@
+class_name: "baseline.models.${model.architecture}"
+architecture: "gamr"
+nclasses: ${training.nclasses}
+nhead: 1
+steps: 4
+params:
+  pretrained: False
+  ckpt: ""

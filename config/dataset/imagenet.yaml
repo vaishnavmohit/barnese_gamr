@@ -1,0 +1,8 @@
+name: "ImageFolder" # "ImageNet"
+class_name: "torchvision.datasets.${dataset.name}"
+nclasses: 1000
+path: "${data.data_path}"
+trfs_params:
+  train_crop_size: 224
+  val_crop_size: 224
+  val_resize: 256

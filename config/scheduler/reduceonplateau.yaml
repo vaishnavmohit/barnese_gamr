@@ -1,0 +1,10 @@
+name: "ReduceLROnPlateau"
+class_name: "torch.optim.lr_scheduler.${scheduler.name}"
+use: True
+params:
+  mode: 'max'
+  factor: 0.3
+  patience: 10
+  min_lr: 1e-7
+  verbose: True
+  # eps: .1

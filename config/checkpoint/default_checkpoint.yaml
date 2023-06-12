@@ -1,0 +1,6 @@
+params:
+  monitor: "val_F1_top1"
+  mode: "max"
+  dirpath: "ckpts"
+  filename: "{epoch:03d}-{val_acc:.3f}"
+  save_last: True

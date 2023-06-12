@@ -1,0 +1,6 @@
+# @package _group_
+name: SGD
+class_name: "torch.optim.${optimizer.name}"
+params:
+  lr: ${training.lr}
+  weight_decay: ${training.weight_decay}

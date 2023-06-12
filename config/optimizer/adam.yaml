@@ -1,0 +1,6 @@
+name: Adam
+class_name: "torch.optim.${optimizer.name}"
+params: 
+  weight_decay: ${model_optuna.weight_decay} # training
+  lr: ${model_optuna.lr}
+  # amsgrad: True

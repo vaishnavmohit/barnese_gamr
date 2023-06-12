@@ -1,0 +1,6 @@
+neptune:
+    _target_: pytorch_lightning.loggers.neptune.NeptuneLogger
+    project_name: "Serre-Lab/paleo-ai"
+    api_key: "eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vdWkubmVwdHVuZS5haSIsImFwaV91cmwiOiJodHRwczovL3VpLm5lcHR1bmUuYWkiLCJhcGlfa2V5IjoiODgwMGZmNjktNWMyYS00NjViLWE2MjAtNjY5YWQ1ZmUzNGFmIn0=" # ${env:NEPTUNE_API_TOKEN}  # api key is laoded from environment variable
+    experiment_name: ${model.architecture}+'_data'+${data_name}+'_bs'+str(${datamodule.batch_size})+'_lr'+str(${model_optuna.lr})+'_wd'+str(${model_optuna.weight_decay})
+    # tags: [${model.architecture}, 'pytorch-light', 'val_split-'+str(${datamodule.val_size}), 'ncls-'+str(${nclasses}), 'wd-'+str(${model_optuna.weight_decay})]

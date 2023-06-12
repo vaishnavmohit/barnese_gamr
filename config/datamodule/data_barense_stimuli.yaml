@@ -1,0 +1,7 @@
+_target_: baseline.data.data_module.DataModule_barense_stimuli
+root: ${training.data_dir}  # data_dir is specified in config.yaml
+batch_size: ${training.batch_size}
+data_name: ${training.data_name}
+num_workers: ${training.num_workers}
+key: ${training.key}
+test_size: ${training.val_size}

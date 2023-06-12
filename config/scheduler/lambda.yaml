@@ -1,0 +1,5 @@
+name: "LambdaLR"
+class_name: "torch.optim.lr_scheduler.${scheduler.name}"
+use: True
+params:
+  step: 50

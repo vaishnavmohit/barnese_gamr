@@ -1,0 +1,6 @@
+class_name: pytorch_lightning.loggers.neptune
+neptune: True
+params:
+  save_dir: "tb_logs"
+  name: ""
+  version: ""

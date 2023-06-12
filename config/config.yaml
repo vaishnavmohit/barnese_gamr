@@ -1,0 +1,83 @@
+defaults:
+  - trainer: optuna
+  - model_optuna: model_v3
+  - model: gamr 
+  - datamodule: data_barense_stimuli
+  - scheduler: step
+  - callbacks: default_optuner
+  - training: optuna
+  - optimizer: adam
+  - logger: null #neptune_op 
+  - override /hydra/sweeper: optuna
+  - override hydra/hydra_logging: colorlog
+  - override hydra/job_logging: colorlog
+
+work_dir: ${hydra:runtime.cwd}
+
+# pretty print config at the start of the run using Rich library
+print_config: True
+# seed
+seed: 12345
+
+hydra:
+  # here we define Optuna hyperparameter search
+  # it optimizes for value returned from function with @hydra.main decorator
+  # learn more here: https://hydra.cc/docs/next/plugins/optuna_sweeper
+  # output paths for hydra logs
+  run:
+    dir: ../data/runs/${training.key}/${model.architecture}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ../data/multiruns/${training.key}/${model.architecture}/${now:%Y-%m-%d_%H-%M-%S}
+    subdir: ${hydra.job.num}
+  job:
+    # you can set here environment variables that are universal for all users
+    # for system specific variables (like data paths) it's better to use .env file!
+    env_set:
+      # currently there are some issues with running sweeps alongside wandb
+      # https://github.com/wandb/client/issues/1314
+      # this env var fixes that
+      WANDB_START_METHOD: thread
+  sweeper:
+    _target_: hydra_plugins.hydra_optuna_sweeper.optuna_sweeper.OptunaSweeper
+    storage: null
+    study_name: null
+    n_jobs: 1
+
+    # 'minimize' or 'maximize' the objective
+    direction: maximize
+
+    # number of experiments that will be executed
+    n_trials: 50
+
+    # choose Optuna hyperparameter sampler
+    # learn more here: https://optuna.readthedocs.io/en/stable/reference/samplers.html
+    sampler:
+      _target_: optuna.samplers.TPESampler
+      seed: 12345
+      consider_prior: true
+      prior_weight: 1.0
+      consider_magic_clip: true
+      consider_endpoints: false
+      n_startup_trials: 10
+      n_ei_candidates: 24
+      multivariate: false
+      warn_independent_sampling: true
+
+    # define range of hyperparameters
+    search_space:
+      model_optuna.lr:
+        type: float
+        low: 0.000001
+        high: 0.001
+      model_optuna.weight_decay:
+        type: float
+        low: 0.000001
+        high: 0.01
+      model.steps:
+        type: int
+        low: 10
+        high: 20
+      # model.val_size:
+      #   type: categorical
+      #   choices: [.1, .15, .2, .25]
+

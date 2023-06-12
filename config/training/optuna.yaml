@@ -1,0 +1,24 @@
+# data related
+data_dir:  "/users/mvaishn1/data/data/mvaishn1/gamr_stanford/data/barense_stimuli/"
+data_name: "ODD"
+batch_size: 256
+task: 1
+key: "familiar_high"
+num_workers: 3
+val_size: .3
+var: .05
+
+# model
+nclasses: 4
+
+# save file
+csv: "result_gamr_freeze"
+# testing model:
+test: False
+
+# train_v3.py
+neptune: True
+ckpt: ''
+optuna: False
+
+debug: False

@@ -1,0 +1,7 @@
+params:
+  monitor: "val_F1_top1"
+  mode: "max"
+  dirpath: "ckpts"
+  # filename: "{epoch:03d}-{val_acc1:.3f}"
+  filename: "checkpoint"
+  save_last: True

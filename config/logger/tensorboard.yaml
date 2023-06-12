@@ -1,0 +1,6 @@
+class_name: pytorch_lightning.loggers.TensorBoardLogger
+neptune: False
+params:
+  save_dir: "tb_logs"
+  name: ""
+  version: ""
